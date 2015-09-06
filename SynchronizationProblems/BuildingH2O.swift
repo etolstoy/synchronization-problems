@@ -49,12 +49,12 @@ class H2OOperationScheduler {
         barrierQueue.maxConcurrentOperationCount = 1
     }
     
-    func addOxygen() {
+    func addOxygen(block: (() -> ())) {
         let currentBarrier = obtainBarrier { (barrier) -> Bool in
             return barrier.oxygen < 1
         }
 
-        let oxygenOperation = newOxygenOperation()
+        let oxygenOperation = NSBlockOperation(block: block)
         
         oxygenOperation.addDependency(currentBarrier)
         oxygenQueue.addOperation(oxygenOperation)
@@ -62,12 +62,12 @@ class H2OOperationScheduler {
         currentBarrier.oxygen += 1
     }
     
-    func addHydrogen() {
+    func addHydrogen(block: (() -> ())) {
         let currentBarrier = obtainBarrier { (barrier) -> Bool in
             return barrier.hydrogen < 2
         }
 
-        let hydrogenOperation = newHydrogenOperation()
+        let hydrogenOperation = NSBlockOperation(block: block)
         
         hydrogenOperation.addDependency(currentBarrier)
         hydrogenQueue.addOperation(hydrogenOperation)

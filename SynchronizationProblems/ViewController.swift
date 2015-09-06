@@ -20,13 +20,13 @@ class ViewController: UIViewController {
     func buildingH2O() {
         let scheduler = H2OOperationScheduler()
         
-        for _ in 1...10 {
-            scheduler.addHydrogen()
-        }
-        
-        for _ in 1...5 {
-            scheduler.addOxygen()
-        }
+//        for _ in 1...10 {
+//            scheduler.addHydrogen()
+//        }
+//        
+//        for _ in 1...5 {
+//            scheduler.addOxygen()
+//        }
     }
     
     func diningPhilosophers() {
