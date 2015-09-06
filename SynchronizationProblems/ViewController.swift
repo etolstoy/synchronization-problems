@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        buildingH2O()
+        readersWriters()
     }
     
     func buildingH2O() {
@@ -42,10 +42,10 @@ class ViewController: UIViewController {
     func readersWriters() {
         let scheduler = ReaderWriterOperationScheduler()
         
-        scheduler.addWriterOperation()
+        scheduler.addWriter()
         for i in 1...5 {
-            scheduler.addReaderOperation(i)
+            scheduler.addReader(i)
         }
-        scheduler.addWriterOperation()
+        scheduler.addWriter()
     }
 }

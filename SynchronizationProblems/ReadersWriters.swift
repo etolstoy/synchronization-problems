@@ -8,17 +8,6 @@
 
 import Foundation
 
-class ReaderWriterBlockOperation: NSBlockOperation {
-    var isWriter: Bool
-    
-    init(block: () -> Void, writer: Bool) {
-        isWriter = writer
-        
-        super.init()
-        addExecutionBlock(block)
-    }
-}
-
 class ReaderWriterOperationScheduler {
     var readerQueue = NSOperationQueue()
     var writerQueue = NSOperationQueue()
@@ -32,46 +21,40 @@ class ReaderWriterOperationScheduler {
         writerQueue.maxConcurrentOperationCount = 1
     }
     
-    func addReaderOperation (index: Int) {
-        let readerOperation = ReaderWriterBlockOperation.init(block: {
-                // Для большей убедительности заставим операции выполняться подольше
-                sleep(1)
-                print("reader \(index) fired")
-            }, writer: false)
-        readerOperation.isWriter = false
-        addOperation(readerOperation)
+    func addReaderOperation (operation: NSBlockOperation) {
+        // Каждый новый читатель должен дождаться выполнения всех писателей
+        // С остальными читателями он выполняется параллельно
+        for writerOperation in writerQueue.operations {
+            operation.addDependency(writerOperation)
+        }
+        readerQueue.addOperation(operation)
     }
     
-    func addWriterOperation () {
-        let writerOperation = ReaderWriterBlockOperation.init(block: {
+    func addWriterOperation (operation: NSBlockOperation) {
+        // Последовательность выполнения писателей обеспечивается самой очередь
+        // Всем существующим читателям добавляется зависимость на нового писателя
+        for readerOperation in readerQueue.operations {
+            readerOperation.addDependency(operation)
+        }
+        writerQueue.addOperation(operation)
+    }
+    
+    //  Набор вспомогательных методов для демонстрации работы Scheduler'а
+    func addReader(index: Int) {
+        let operation = NSBlockOperation.init(block: {
+            // Для большей убедительности заставим операции выполняться подольше
+            sleep(1)
+            print("reader \(index) fired")
+        })
+        addReaderOperation(operation)
+    }
+    
+    func addWriter() {
+        let operation = NSBlockOperation.init(block: {
             // Даем писателю больше времени на выполнение, чтобы убедиться в правильности расстановки приоритетов
             sleep(2)
             print("writer fired")
-        }, writer: true)
-        writerOperation.isWriter = true
-        addOperation(writerOperation)
-    }
-    
-    func addOperation(operation: ReaderWriterBlockOperation) {
-        let isReader = !operation.isWriter
-        let hasWriters = writerQueue.operationCount > 0
-        
-        let queue = isReader ? readerQueue : writerQueue
-        
-        if (isReader && hasWriters) {
-            // Если мы добавляем читателя, а в очереди уже есть писатели, тогда новый читатель должен дождаться окончания их выполнения
-            for writerOperation in writerQueue.operations {
-                operation.addDependency(writerOperation)
-            }
-        }
-        
-        if (!isReader) {
-            // Если мы добавляем писателя, а в очереди были читатели - они должны дождаться его выполнения
-            for readerOperation in readerQueue.operations {
-                readerOperation.addDependency(operation)
-            }
-        }
-        
-        queue.addOperation(operation)
+        })
+        addWriterOperation(operation)
     }
 }
