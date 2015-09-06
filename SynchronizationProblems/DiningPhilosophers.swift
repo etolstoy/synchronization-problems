@@ -20,7 +20,7 @@ class PhilosopherBlockOperation: NSBlockOperation {
 }
 
 class DiningPhilosophersOperationScheduler {
-    var philosopherQueues = [NSOperationQueue]()
+    let philosopherQueues = [NSOperationQueue]()
     
     init() {
         // В нашем представлении философы - это серийные очереди
@@ -45,7 +45,7 @@ class DiningPhilosophersOperationScheduler {
         let leftPhilosopherEats = leftPhilosopherQueue.operationCount > 0
         let rightPhilosopherEats = rightPhilosopherQueue.operationCount > 0
         
-        if (leftPhilosopherEats) {
+        if leftPhilosopherEats {
             for leftOperation in leftPhilosopherQueue.operations {
                 operation.addDependency(leftOperation)
             }
@@ -53,7 +53,7 @@ class DiningPhilosophersOperationScheduler {
             print("philosopher \(index) gets left fork")
         }
         
-        if (rightPhilosopherEats) {
+        if rightPhilosopherEats {
             for rightOperation in rightPhilosopherQueue.operations {
                 operation.addDependency(rightOperation)
             }

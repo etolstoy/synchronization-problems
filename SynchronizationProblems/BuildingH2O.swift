@@ -11,13 +11,16 @@ import Foundation
 class H2OBarrierBlockOperation: NSBlockOperation {
     var hydrogen = 0
     var oxygen = 0
+    var isBarrierReady: Bool {
+        return hydrogen == 2 && oxygen == 1
+    }
 
     init(barrierQueue: NSOperationQueue) {
         super.init()
         
         // Если мы хотим выполнить какую-то работу в результате составления молекулы H2O,
         // то сделать ее можно в этом замыкании
-        addExecutionBlock { () -> Void in
+        addExecutionBlock {
             sleep(1)
             print("processing new H2O molecule, oxygen: \(self.oxygen), hydrogen:\(self.hydrogen)")
             self.suspendQueueIfNeeded(barrierQueue)
@@ -26,27 +29,23 @@ class H2OBarrierBlockOperation: NSBlockOperation {
     
     func suspendQueueIfNeeded(queue: NSOperationQueue) {
         // Если выполнился последний барьер - то останавливаем очередь
-        if (queue.operationCount <= 1) {
+        if queue.operationCount <= 1 {
             queue.suspended = true
             return;
         }
         
         // Если следующий барьер готов выполниться - то не останавливаем очередь
         let nextBarrier = queue.operations[1] as! H2OBarrierBlockOperation
-        if (!nextBarrier.isBarrierReady()) {
+        if !nextBarrier.isBarrierReady {
             queue.suspended = true
         }
-    }
-    
-    func isBarrierReady() -> Bool {
-        return hydrogen == 2 && oxygen == 1
     }
 }
 
 class H2OOperationScheduler {
-    var oxygenQueue = NSOperationQueue()
-    var hydrogenQueue = NSOperationQueue()
-    var barrierQueue = NSOperationQueue()
+    let oxygenQueue = NSOperationQueue()
+    let hydrogenQueue = NSOperationQueue()
+    let barrierQueue = NSOperationQueue()
     let MAX = NSOperationQueueDefaultMaxConcurrentOperationCount
     
     init() {
@@ -90,7 +89,7 @@ class H2OOperationScheduler {
     }
     
     func withdrawBarrierIfNeeded(barrier: H2OBarrierBlockOperation) {
-        if (barrier.isBarrierReady()) {
+        if barrier.isBarrierReady {
             barrierQueue.suspended = false
         }
     }
@@ -99,7 +98,7 @@ class H2OOperationScheduler {
     // "Подходящесть" определяется переданным замыканием.
     func obtainBarrier(condition: (barrier: H2OBarrierBlockOperation) -> Bool) -> H2OBarrierBlockOperation {
         let currentBarrier: H2OBarrierBlockOperation
-        if (barrierQueue.operationCount > 0) {
+        if barrierQueue.operationCount > 0 {
             currentBarrier = barrierQueue.operations.first as! H2OBarrierBlockOperation
             if (condition(barrier: currentBarrier)) {
                 return obtainNextBarrier(currentBarrier, condition: condition)
@@ -113,7 +112,7 @@ class H2OOperationScheduler {
     func obtainNextBarrier(barrier: H2OBarrierBlockOperation, condition: (barrier: H2OBarrierBlockOperation) -> Bool) -> H2OBarrierBlockOperation {
         let nextIndex = barrierQueue.operations.indexOf(barrier)! + 1
         
-        if (barrierQueue.operationCount > nextIndex) {
+        if barrierQueue.operationCount > nextIndex {
             let nextBarrier = barrierQueue.operations[nextIndex] as! H2OBarrierBlockOperation
             if (condition(barrier: nextBarrier)) {
                 return obtainNextBarrier(nextBarrier, condition: condition)
@@ -127,7 +126,7 @@ class H2OOperationScheduler {
 
     func newBarrier() -> H2OBarrierBlockOperation {
         let newBarrier = H2OBarrierBlockOperation(barrierQueue: barrierQueue)
-        if (barrierQueue.operationCount > 0) {
+        if barrierQueue.operationCount > 0 {
             newBarrier.addDependency(barrierQueue.operations.last!)
         }
 

@@ -9,8 +9,8 @@
 import Foundation
 
 class ReaderWriterOperationScheduler {
-    var readerQueue = NSOperationQueue()
-    var writerQueue = NSOperationQueue()
+    let readerQueue = NSOperationQueue()
+    let writerQueue = NSOperationQueue()
     let MAX = NSOperationQueueDefaultMaxConcurrentOperationCount
     
     init () {
@@ -21,7 +21,7 @@ class ReaderWriterOperationScheduler {
         writerQueue.maxConcurrentOperationCount = 1
     }
     
-    func addReaderOperation (operation: NSBlockOperation) {
+    func addReaderOperation(operation: NSBlockOperation) {
         // Каждый новый читатель должен дождаться выполнения всех писателей
         // С остальными читателями он выполняется параллельно
         for writerOperation in writerQueue.operations {
@@ -30,7 +30,7 @@ class ReaderWriterOperationScheduler {
         readerQueue.addOperation(operation)
     }
     
-    func addWriterOperation (operation: NSBlockOperation) {
+    func addWriterOperation(operation: NSBlockOperation) {
         // Последовательность выполнения писателей обеспечивается самой очередь
         // Всем существующим читателям добавляется зависимость на нового писателя
         for readerOperation in readerQueue.operations {
