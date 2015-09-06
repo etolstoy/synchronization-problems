@@ -19,7 +19,7 @@ class PhilosopherBlockOperation: NSBlockOperation {
     }
 }
 
-class DiningPhilosophersOperationSheduler {
+class DiningPhilosophersOperationScheduler {
     var philosopherQueues = [NSOperationQueue]()
     
     init() {

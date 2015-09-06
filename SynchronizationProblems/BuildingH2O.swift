@@ -43,7 +43,7 @@ class H2OBarrierBlockOperation: NSBlockOperation {
     }
 }
 
-class H2OOperationSheduler {
+class H2OOperationScheduler {
     var oxygenQueue = NSOperationQueue()
     var hydrogenQueue = NSOperationQueue()
     var barrierQueue = NSOperationQueue()

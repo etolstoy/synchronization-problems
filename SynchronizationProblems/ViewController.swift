@@ -18,34 +18,34 @@ class ViewController: UIViewController {
     }
     
     func buildingH2O() {
-        let sheduler = H2OOperationSheduler()
+        let scheduler = H2OOperationScheduler()
         
         for _ in 1...10 {
-            sheduler.addHydrogen()
+            scheduler.addHydrogen()
         }
         
         for _ in 1...5 {
-            sheduler.addOxygen()
+            scheduler.addOxygen()
         }
     }
     
     func diningPhilosophers() {
-        let sheduler = DiningPhilosophersOperationSheduler()
+        let scheduler = DiningPhilosophersOperationScheduler()
         
-        sheduler.startPhilosopher(0)
-        sheduler.startPhilosopher(3)
-        sheduler.startPhilosopher(2)
-        sheduler.startPhilosopher(1)
-        sheduler.startPhilosopher(4)
+        scheduler.startPhilosopher(0)
+        scheduler.startPhilosopher(3)
+        scheduler.startPhilosopher(2)
+        scheduler.startPhilosopher(1)
+        scheduler.startPhilosopher(4)
     }
 
     func readersWriters() {
-        let sheduler = ReaderWriterOperationSheduler()
+        let scheduler = ReaderWriterOperationScheduler()
         
-        sheduler.addWriterOperation()
+        scheduler.addWriterOperation()
         for i in 1...5 {
-            sheduler.addReaderOperation(i)
+            scheduler.addReaderOperation(i)
         }
-        sheduler.addWriterOperation()
+        scheduler.addWriterOperation()
     }
 }

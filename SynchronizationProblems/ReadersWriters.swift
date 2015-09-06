@@ -19,7 +19,7 @@ class ReaderWriterBlockOperation: NSBlockOperation {
     }
 }
 
-class ReaderWriterOperationSheduler {
+class ReaderWriterOperationScheduler {
     var readerQueue = NSOperationQueue()
     var writerQueue = NSOperationQueue()
     let MAX = NSOperationQueueDefaultMaxConcurrentOperationCount
