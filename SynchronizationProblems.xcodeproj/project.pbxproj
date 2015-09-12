@@ -15,6 +15,7 @@
 		9F9C17871B8BA8C600BAF02D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C17851B8BA8C600BAF02D /* LaunchScreen.storyboard */; };
 		9F9C17921B8BA8C700BAF02D /* SynchronizationProblemsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C17911B8BA8C700BAF02D /* SynchronizationProblemsTests.swift */; };
 		9F9C179D1B8BA8C700BAF02D /* SynchronizationProblemsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C179C1B8BA8C700BAF02D /* SynchronizationProblemsUITests.swift */; };
+		9FB3453D1BA47E10001F270A /* MyScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9FB3453C1BA47E10001F270A /* MyScene.sks */; settings = {ASSET_TAGS = (); }; };
 		9FD31CC41B90D5E200473390 /* ReadersWriters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC31B90D5E200473390 /* ReadersWriters.swift */; };
 		9FD31CC61B91F36100473390 /* DiningPhilosophers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */; };
 		9FD31CC81B9204B600473390 /* BuildingH2O.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC71B9204B600473390 /* BuildingH2O.swift */; };
@@ -52,6 +53,7 @@
 		9F9C17981B8BA8C700BAF02D /* SynchronizationProblemsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SynchronizationProblemsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C179C1B8BA8C700BAF02D /* SynchronizationProblemsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynchronizationProblemsUITests.swift; sourceTree = "<group>"; };
 		9F9C179E1B8BA8C700BAF02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9FB3453C1BA47E10001F270A /* MyScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyScene.sks; sourceTree = "<group>"; };
 		9FD31CC31B90D5E200473390 /* ReadersWriters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadersWriters.swift; sourceTree = "<group>"; };
 		9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningPhilosophers.swift; sourceTree = "<group>"; };
 		9FD31CC71B9204B600473390 /* BuildingH2O.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingH2O.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				9FD31CC31B90D5E200473390 /* ReadersWriters.swift */,
 				9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */,
 				9FD31CC71B9204B600473390 /* BuildingH2O.swift */,
+				9FB3453C1BA47E10001F270A /* MyScene.sks */,
 			);
 			path = SynchronizationProblems;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 			files = (
 				9F9C17871B8BA8C600BAF02D /* LaunchScreen.storyboard in Resources */,
 				9F9C17841B8BA8C600BAF02D /* Assets.xcassets in Resources */,
+				9FB3453D1BA47E10001F270A /* MyScene.sks in Resources */,
 				9F9C17821B8BA8C600BAF02D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

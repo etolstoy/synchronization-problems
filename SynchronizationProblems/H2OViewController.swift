@@ -13,18 +13,83 @@ class H2OViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let scene = GameScene(size: view.bounds.size)
+        
+        let scene = H2OScene(fileNamed:"MyScene.sks")
+
         let skView = view as! SKView
         
         skView.showsFPS = true
         skView.showsNodeCount = true
         skView.ignoresSiblingOrder = true
-        scene.scaleMode = .ResizeFill
+        scene!.scaleMode = .AspectFit
         skView.presentScene(scene)
     }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
+    }
+}
+
+class H2OScene: SKScene {
+    override func didMoveToView(view: SKView) {
+    }
+    
+    override func update(currentTime: CFTimeInterval) {
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            if (location.x < self.size.width / 2) {
+                let sprite = HydrogenNode.hydrogen(touch.locationInNode(self))
+                self.addChild(sprite)
+            } else {
+                let sprite = PlayerNode.player(touch.locationInNode(self))
+                self.addChild(sprite)
+            }
+            
+            
+        }
+    }
+}
+
+class HydrogenNode: SKSpriteNode {
+    class func hydrogen(location: CGPoint) -> HydrogenNode {
+        let sprite = HydrogenNode(imageNamed: "hydrogen")
+        
+        sprite.position = location
+        
+        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "player"), size: sprite.size)
+        if let physics = sprite.physicsBody {
+            physics.affectedByGravity = true
+            physics.allowsRotation = true
+            physics.dynamic = true;
+            physics.linearDamping = 0.75
+            physics.angularDamping = 0.75
+        }
+        
+        return sprite
+    }
+}
+
+class PlayerNode: SKSpriteNode {
+    class func player(location: CGPoint) -> PlayerNode {
+        let sprite = PlayerNode(imageNamed:"player")
+        
+        sprite.xScale = 3
+        sprite.yScale = 3
+        sprite.position = location
+        
+        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "player"), size: sprite.size)
+        if let physics = sprite.physicsBody {
+            physics.affectedByGravity = true
+            physics.allowsRotation = true
+            physics.dynamic = true;
+            physics.linearDamping = 0.75
+            physics.angularDamping = 0.75
+        }
+        
+        return sprite
     }
 }
 
@@ -61,31 +126,31 @@ class GameScene: SKScene {
 //            ))
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let touch: UITouch = touches.first!;
-        let location = touch.locationInNode(self)
-        let node = self.nodeAtPoint(location)
-        
-        if node.name == "oxygenButtonNode" {
-            let oxygen = createOxygen()
-            oxygen.runAction(moveOxygen(), completion: {
-                self.scheduler.addOxygen({ () -> () in
-                    oxygen.removeFromParent()
-                    self.oxygenCount--
-                })
-            })
-        }
-        
-        if node.name == "hydrogenButtonNode" {
-            let hydrogen = createHydrogen()
-            hydrogen.runAction(moveHydrogen(), completion: {
-                self.scheduler.addHydrogen({ () -> () in
-                    hydrogen.removeFromParent()
-                    self.hydrogenCount--
-                })
-            })
-        }
-    }
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        let touch: UITouch = touches.first!;
+//        let location = touch.locationInNode(self)
+//        let node = self.nodeAtPoint(location)
+//        
+//        if node.name == "oxygenButtonNode" {
+//            let oxygen = createOxygen()
+//            oxygen.runAction(moveOxygen(), completion: {
+//                self.scheduler.addOxygen({ () -> () in
+//                    oxygen.removeFromParent()
+//                    self.oxygenCount--
+//                })
+//            })
+//        }
+//        
+//        if node.name == "hydrogenButtonNode" {
+//            let hydrogen = createHydrogen()
+//            hydrogen.runAction(moveHydrogen(), completion: {
+//                self.scheduler.addHydrogen({ () -> () in
+//                    hydrogen.removeFromParent()
+//                    self.hydrogenCount--
+//                })
+//            })
+//        }
+//    }
     
     func createOxygen() -> SKSpriteNode {
         let oxygen = SKSpriteNode(imageNamed: "oxygen")
