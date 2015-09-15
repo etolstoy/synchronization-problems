@@ -38,10 +38,11 @@ class H2OScene: SKScene {
     override func didMoveToView(view: SKView) {
         scheduler.block = { (nodes) -> Void in
             for node in nodes {
+                
                 node.runAction(SKAction.sequence([
-                    SKAction.moveTo(CGPoint(x: self.frame.size.width/2, y: self.frame.size.height/2), duration: 1.0),
+                    SKAction.moveTo(CGPoint(x: self.frame.size.width/2, y: node.position.y), duration: 1.0),
+                    SKAction.moveTo(CGPoint(x: self.frame.size.width/2, y: self.frame.size.height - 200), duration: 1.0),
                     SKAction.moveTo(CGPoint(x: self.frame.size.width * 2, y: self.frame.size.height/2), duration: 2.0),
-//                    SKAction.fadeOutWithDuration(0)
                     ]))
             }
         }
@@ -81,8 +82,8 @@ class HydrogenNode: SKSpriteNode {
     class func hydrogen(location: CGPoint) -> HydrogenNode {
         let sprite = HydrogenNode(imageNamed: "hydrogen")
         
-        sprite.xScale = 3
-        sprite.yScale = 3
+        sprite.xScale = 1
+        sprite.yScale = 1
         sprite.position = location
         
         sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "player"), size: sprite.size)
@@ -102,8 +103,8 @@ class OxygenNode: SKSpriteNode {
     class func player(location: CGPoint) -> OxygenNode {
         let sprite = OxygenNode(imageNamed:"oxygen")
         
-        sprite.xScale = 3
-        sprite.yScale = 3
+        sprite.xScale = 1
+        sprite.yScale = 1
         sprite.position = location
         
         sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: "player"), size: sprite.size)
