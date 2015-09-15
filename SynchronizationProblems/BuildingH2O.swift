@@ -7,72 +7,31 @@
 //
 
 import Foundation
-
-class H2OOperation: NSOperation {
-    var hydrogen = 0 {
-        willSet {
-            willChangeValueForKey("isReady")
-        }
-        didSet {
-            didChangeValueForKey("isReady")
-        }
-    }
-    
-    var oxygen = 0 {
-        willSet {
-            willChangeValueForKey("isReady")
-        }
-        didSet {
-            didChangeValueForKey("isReady")
-        }
-    }
-    
-    override var ready: Bool {
-        return hydrogen == 2 && oxygen == 1
-    }
-    
-    override func main() {
-        print("H2O")
-    }
-}
+import SpriteKit
 
 class H2OOperationScheduler {
-    let oxygenQueue = NSOperationQueue()
-    let hydrogenQueue = NSOperationQueue()
     let barrierQueue = NSOperationQueue()
     let MAX = NSOperationQueueDefaultMaxConcurrentOperationCount
+    var block: (Array<SKSpriteNode>) -> Void
     
-    init() {
-        oxygenQueue.maxConcurrentOperationCount = MAX
-        hydrogenQueue.maxConcurrentOperationCount = MAX
+    init(H2OBlock: (Array<SKSpriteNode>) -> Void) {
         // По условию задачи операции-барьеры должны выполняться последовательно
         barrierQueue.maxConcurrentOperationCount = 1
+        block = H2OBlock
     }
     
-    func addOxygen(block: (() -> ())) {
+    func addOxygen(operation: AtomOperation) {
         let currentBarrier = obtainBarrier { (barrier) -> Bool in
             return barrier.oxygen < 1
         }
-
-        let oxygenOperation = NSBlockOperation(block: block)
-        
-        oxygenOperation.addDependency(currentBarrier)
-        oxygenQueue.addOperation(oxygenOperation)
-        
-        currentBarrier.oxygen += 1
+        currentBarrier.addOxygen(operation)
     }
     
-    func addHydrogen(block: (() -> ())) {
+    func addHydrogen(operation: AtomOperation) {
         let currentBarrier = obtainBarrier { (barrier) -> Bool in
             return barrier.hydrogen < 2
         }
-
-        let hydrogenOperation = NSBlockOperation(block: block)
-        
-        hydrogenOperation.addDependency(currentBarrier)
-        hydrogenQueue.addOperation(hydrogenOperation)
-        
-        currentBarrier.hydrogen += 1
+        currentBarrier.addHydrogen(operation)
     }
     
     // Вкратце - мы обходим очередь барьеров в поисках подходящего, если не найден - создаем новый и пушим в очередь.
@@ -106,21 +65,8 @@ class H2OOperationScheduler {
     }
 
     func newBarrier() -> H2OOperation {
-        let newBarrier = H2OOperation()
+        let newBarrier = H2OOperation(block: block)
         barrierQueue.addOperation(newBarrier)
         return newBarrier
-    }
-    
-    // Если от операций кислорода и водорода ожидается что-то еще, это можно инкапсулировать в этих функциях
-    func newOxygenOperation() -> NSBlockOperation {
-        return NSBlockOperation.init(block: {
-            print("O")
-        })
-    }
-    
-    func newHydrogenOperation() -> NSBlockOperation {
-        return NSBlockOperation.init(block: {
-            print("H")
-        })
     }
 }
