@@ -38,8 +38,7 @@ class H2OOperationScheduler {
         currentMolecule.addHydrogen(operation)
     }
     
-    // Вкратце - мы обходим очередь молекул в поисках подходящей,
-    // если не найдена - создаем новую и кладем в очередь.
+    // Вкратце - мы обходим очередь молекул в поисках подходящей, если не найдена - создаем новую и кладем в очередь.
     // "Подходящесть" определяется переданным замыканием.
     func obtainMolecule(condition: (molecule: H2OOperation) -> Bool) -> H2OOperation {
         let currentMolecule: H2OOperation
