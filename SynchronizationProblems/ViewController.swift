@@ -13,20 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        buildingH2O()
-    }
     
-    func buildingH2O() {
-//        let scheduler = H2OOperationScheduler()
-        
-//        for _ in 1...10 {
-//            scheduler.addHydrogen()
-//        }
-//        
-//        for _ in 1...5 {
-//            scheduler.addOxygen()
-//        }
     }
     
     func diningPhilosophers() {

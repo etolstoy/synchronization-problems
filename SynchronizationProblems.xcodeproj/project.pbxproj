@@ -7,25 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F198A1A1BAECFE800AEB751 /* H2OScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A191BAECFE800AEB751 /* H2OScene.swift */; settings = {ASSET_TAGS = (); }; };
-		9F198A1C1BAED01200AEB751 /* H2ONodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A1B1BAED01200AEB751 /* H2ONodes.swift */; settings = {ASSET_TAGS = (); }; };
-		9F1DEC421B9C767100C7CA8F /* H2OViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1DEC411B9C767100C7CA8F /* H2OViewController.swift */; };
+		9F198A281BAED12E00AEB751 /* H2OLaboratory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9F198A1E1BAED12E00AEB751 /* H2OLaboratory.sks */; settings = {ASSET_TAGS = (); }; };
+		9F198A291BAED12E00AEB751 /* H2ONodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A1F1BAED12E00AEB751 /* H2ONodes.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2A1BAED12E00AEB751 /* H2OOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A201BAED12E00AEB751 /* H2OOperations.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2B1BAED12E00AEB751 /* H2OOperationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A211BAED12E00AEB751 /* H2OOperationScheduler.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2C1BAED12E00AEB751 /* H2OScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A221BAED12E00AEB751 /* H2OScene.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2D1BAED12E00AEB751 /* H2OViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A231BAED12E00AEB751 /* H2OViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2E1BAED12E00AEB751 /* DiningPhilosophers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A251BAED12E00AEB751 /* DiningPhilosophers.swift */; settings = {ASSET_TAGS = (); }; };
+		9F198A2F1BAED12E00AEB751 /* ReadersWriters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F198A271BAED12E00AEB751 /* ReadersWriters.swift */; settings = {ASSET_TAGS = (); }; };
 		9F9C177D1B8BA8C600BAF02D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C177C1B8BA8C600BAF02D /* AppDelegate.swift */; };
 		9F9C177F1B8BA8C600BAF02D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9C177E1B8BA8C600BAF02D /* ViewController.swift */; };
 		9F9C17821B8BA8C600BAF02D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C17801B8BA8C600BAF02D /* Main.storyboard */; };
 		9F9C17841B8BA8C600BAF02D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C17831B8BA8C600BAF02D /* Assets.xcassets */; };
 		9F9C17871B8BA8C600BAF02D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F9C17851B8BA8C600BAF02D /* LaunchScreen.storyboard */; };
-		9FB3453D1BA47E10001F270A /* H2OLaboratory.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9FB3453C1BA47E10001F270A /* H2OLaboratory.sks */; settings = {ASSET_TAGS = (); }; };
-		9FD31CC41B90D5E200473390 /* ReadersWriters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC31B90D5E200473390 /* ReadersWriters.swift */; };
-		9FD31CC61B91F36100473390 /* DiningPhilosophers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */; };
-		9FD31CC81B9204B600473390 /* H2OOperationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FD31CC71B9204B600473390 /* H2OOperationScheduler.swift */; };
-		9FE1806F1BA4C82200CBDE6F /* H2OOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE1806E1BA4C82200CBDE6F /* H2OOperations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F198A191BAECFE800AEB751 /* H2OScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OScene.swift; sourceTree = "<group>"; };
-		9F198A1B1BAED01200AEB751 /* H2ONodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2ONodes.swift; sourceTree = "<group>"; };
-		9F1DEC411B9C767100C7CA8F /* H2OViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OViewController.swift; sourceTree = "<group>"; };
+		9F198A1E1BAED12E00AEB751 /* H2OLaboratory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = H2OLaboratory.sks; sourceTree = "<group>"; };
+		9F198A1F1BAED12E00AEB751 /* H2ONodes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2ONodes.swift; sourceTree = "<group>"; };
+		9F198A201BAED12E00AEB751 /* H2OOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OOperations.swift; sourceTree = "<group>"; };
+		9F198A211BAED12E00AEB751 /* H2OOperationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OOperationScheduler.swift; sourceTree = "<group>"; };
+		9F198A221BAED12E00AEB751 /* H2OScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OScene.swift; sourceTree = "<group>"; };
+		9F198A231BAED12E00AEB751 /* H2OViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OViewController.swift; sourceTree = "<group>"; };
+		9F198A251BAED12E00AEB751 /* DiningPhilosophers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningPhilosophers.swift; sourceTree = "<group>"; };
+		9F198A271BAED12E00AEB751 /* ReadersWriters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadersWriters.swift; sourceTree = "<group>"; };
 		9F9C17791B8BA8C600BAF02D /* SynchronizationProblems.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SynchronizationProblems.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F9C177C1B8BA8C600BAF02D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F9C177E1B8BA8C600BAF02D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,11 +38,6 @@
 		9F9C17831B8BA8C600BAF02D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F9C17861B8BA8C600BAF02D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F9C17881B8BA8C600BAF02D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9FB3453C1BA47E10001F270A /* H2OLaboratory.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = H2OLaboratory.sks; sourceTree = "<group>"; };
-		9FD31CC31B90D5E200473390 /* ReadersWriters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadersWriters.swift; sourceTree = "<group>"; };
-		9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningPhilosophers.swift; sourceTree = "<group>"; };
-		9FD31CC71B9204B600473390 /* H2OOperationScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OOperationScheduler.swift; sourceTree = "<group>"; };
-		9FE1806E1BA4C82200CBDE6F /* H2OOperations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H2OOperations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +51,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F198A1D1BAED12E00AEB751 /* BuildingH2O */ = {
+			isa = PBXGroup;
+			children = (
+				9F198A1E1BAED12E00AEB751 /* H2OLaboratory.sks */,
+				9F198A1F1BAED12E00AEB751 /* H2ONodes.swift */,
+				9F198A201BAED12E00AEB751 /* H2OOperations.swift */,
+				9F198A211BAED12E00AEB751 /* H2OOperationScheduler.swift */,
+				9F198A221BAED12E00AEB751 /* H2OScene.swift */,
+				9F198A231BAED12E00AEB751 /* H2OViewController.swift */,
+			);
+			path = BuildingH2O;
+			sourceTree = "<group>";
+		};
+		9F198A241BAED12E00AEB751 /* DiningPhilosophers */ = {
+			isa = PBXGroup;
+			children = (
+				9F198A251BAED12E00AEB751 /* DiningPhilosophers.swift */,
+			);
+			path = DiningPhilosophers;
+			sourceTree = "<group>";
+		};
+		9F198A261BAED12E00AEB751 /* ReadersWriters */ = {
+			isa = PBXGroup;
+			children = (
+				9F198A271BAED12E00AEB751 /* ReadersWriters.swift */,
+			);
+			path = ReadersWriters;
+			sourceTree = "<group>";
+		};
 		9F9C17701B8BA8C600BAF02D = {
 			isa = PBXGroup;
 			children = (
@@ -70,30 +99,17 @@
 		9F9C177B1B8BA8C600BAF02D /* SynchronizationProblems */ = {
 			isa = PBXGroup;
 			children = (
+				9F198A1D1BAED12E00AEB751 /* BuildingH2O */,
+				9F198A241BAED12E00AEB751 /* DiningPhilosophers */,
+				9F198A261BAED12E00AEB751 /* ReadersWriters */,
 				9F9C177C1B8BA8C600BAF02D /* AppDelegate.swift */,
 				9F9C177E1B8BA8C600BAF02D /* ViewController.swift */,
 				9F9C17801B8BA8C600BAF02D /* Main.storyboard */,
 				9F9C17831B8BA8C600BAF02D /* Assets.xcassets */,
 				9F9C17851B8BA8C600BAF02D /* LaunchScreen.storyboard */,
 				9F9C17881B8BA8C600BAF02D /* Info.plist */,
-				9FD31CC31B90D5E200473390 /* ReadersWriters.swift */,
-				9FD31CC51B91F36100473390 /* DiningPhilosophers.swift */,
-				9FE1806D1BA4C80000CBDE6F /* BuildingH2O */,
 			);
 			path = SynchronizationProblems;
-			sourceTree = "<group>";
-		};
-		9FE1806D1BA4C80000CBDE6F /* BuildingH2O */ = {
-			isa = PBXGroup;
-			children = (
-				9F1DEC411B9C767100C7CA8F /* H2OViewController.swift */,
-				9F198A191BAECFE800AEB751 /* H2OScene.swift */,
-				9F198A1B1BAED01200AEB751 /* H2ONodes.swift */,
-				9FE1806E1BA4C82200CBDE6F /* H2OOperations.swift */,
-				9FD31CC71B9204B600473390 /* H2OOperationScheduler.swift */,
-				9FB3453C1BA47E10001F270A /* H2OLaboratory.sks */,
-			);
-			name = BuildingH2O;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,9 +169,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F198A281BAED12E00AEB751 /* H2OLaboratory.sks in Resources */,
 				9F9C17871B8BA8C600BAF02D /* LaunchScreen.storyboard in Resources */,
 				9F9C17841B8BA8C600BAF02D /* Assets.xcassets in Resources */,
-				9FB3453D1BA47E10001F270A /* H2OLaboratory.sks in Resources */,
 				9F9C17821B8BA8C600BAF02D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,15 +183,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F198A1A1BAECFE800AEB751 /* H2OScene.swift in Sources */,
-				9FE1806F1BA4C82200CBDE6F /* H2OOperations.swift in Sources */,
-				9F1DEC421B9C767100C7CA8F /* H2OViewController.swift in Sources */,
-				9FD31CC81B9204B600473390 /* H2OOperationScheduler.swift in Sources */,
-				9FD31CC61B91F36100473390 /* DiningPhilosophers.swift in Sources */,
-				9FD31CC41B90D5E200473390 /* ReadersWriters.swift in Sources */,
+				9F198A2F1BAED12E00AEB751 /* ReadersWriters.swift in Sources */,
 				9F9C177F1B8BA8C600BAF02D /* ViewController.swift in Sources */,
-				9F198A1C1BAED01200AEB751 /* H2ONodes.swift in Sources */,
+				9F198A291BAED12E00AEB751 /* H2ONodes.swift in Sources */,
+				9F198A2C1BAED12E00AEB751 /* H2OScene.swift in Sources */,
+				9F198A2B1BAED12E00AEB751 /* H2OOperationScheduler.swift in Sources */,
+				9F198A2E1BAED12E00AEB751 /* DiningPhilosophers.swift in Sources */,
+				9F198A2D1BAED12E00AEB751 /* H2OViewController.swift in Sources */,
 				9F9C177D1B8BA8C600BAF02D /* AppDelegate.swift in Sources */,
+				9F198A2A1BAED12E00AEB751 /* H2OOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
