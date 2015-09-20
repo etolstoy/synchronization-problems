@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 class H2OOperationScheduler {
-    let barrierQueue = NSOperationQueue()
+    let moleculeQueue = NSOperationQueue()
     
     // Этот блок вызывается при успешном сборе молекулы H2O,
     // задается снаружи
@@ -18,60 +18,60 @@ class H2OOperationScheduler {
     
     init(H2OBlock: (Array<SKSpriteNode>) -> Void) {
         // По условию задачи операции-барьеры должны выполняться последовательно
-        barrierQueue.maxConcurrentOperationCount = 1
+        moleculeQueue.maxConcurrentOperationCount = 1
         moleculeBlock = H2OBlock
     }
     
     func addOxygen(node: SKSpriteNode, block: () -> Void) {
-        let currentBarrier = obtainBarrier { (barrier) -> Bool in
-            return barrier.oxygen < 1
+        let currentMolecule = obtainMolecule { (molecule) -> Bool in
+            return molecule.oxygen < 1
         }
         let operation = AtomOperation(node: node, block: block)
-        currentBarrier.addOxygen(operation)
+        currentMolecule.addOxygen(operation)
     }
     
     func addHydrogen(node: SKSpriteNode, block: () -> Void) {
-        let currentBarrier = obtainBarrier { (barrier) -> Bool in
-            return barrier.hydrogen < 2
+        let currentMolecule = obtainMolecule { (molecule) -> Bool in
+            return molecule.hydrogen < 2
         }
         let operation = AtomOperation(node: node, block: block)
-        currentBarrier.addHydrogen(operation)
+        currentMolecule.addHydrogen(operation)
     }
     
-    // Вкратце - мы обходим очередь барьеров в поисках подходящего, 
-    // если не найден - создаем новый и кладем в очередь.
+    // Вкратце - мы обходим очередь молекул в поисках подходящей,
+    // если не найдена - создаем новую и кладем в очередь.
     // "Подходящесть" определяется переданным замыканием.
-    func obtainBarrier(condition: (barrier: H2OOperation) -> Bool) -> H2OOperation {
-        let currentBarrier: H2OOperation
-        if barrierQueue.operationCount > 0 {
-            currentBarrier = barrierQueue.operations.first as! H2OOperation
-            if (!condition(barrier: currentBarrier)) {
-                return obtainNextBarrier(currentBarrier, condition: condition)
+    func obtainMolecule(condition: (molecule: H2OOperation) -> Bool) -> H2OOperation {
+        let currentMolecule: H2OOperation
+        if moleculeQueue.operationCount > 0 {
+            currentMolecule = moleculeQueue.operations.first as! H2OOperation
+            if (!condition(molecule: currentMolecule)) {
+                return obtainNextMolecule(currentMolecule, condition: condition)
             }
-            return currentBarrier
+            return currentMolecule
         } else {
-            return newBarrier()
+            return newMolecule()
         }
     }
 
-    func obtainNextBarrier(barrier: H2OOperation, condition: (barrier: H2OOperation) -> Bool) -> H2OOperation {
-        let nextIndex = barrierQueue.operations.indexOf(barrier)! + 1
+    func obtainNextMolecule(molecule: H2OOperation, condition: (molecule: H2OOperation) -> Bool) -> H2OOperation {
+        let nextIndex = moleculeQueue.operations.indexOf(molecule)! + 1
         
-        if barrierQueue.operationCount > nextIndex {
-            let nextBarrier = barrierQueue.operations[nextIndex] as! H2OOperation
-            if (!condition(barrier: nextBarrier)) {
-                return obtainNextBarrier(nextBarrier, condition: condition)
+        if moleculeQueue.operationCount > nextIndex {
+            let nextMolecule = moleculeQueue.operations[nextIndex] as! H2OOperation
+            if (!condition(molecule: nextMolecule)) {
+                return obtainNextMolecule(nextMolecule, condition: condition)
             } else {
-                return nextBarrier
+                return nextMolecule
             }
         } else {
-            return newBarrier()
+            return newMolecule()
         }
     }
 
-    func newBarrier() -> H2OOperation {
-        let newBarrier = H2OOperation(block: moleculeBlock)
-        barrierQueue.addOperation(newBarrier)
-        return newBarrier
+    func newMolecule() -> H2OOperation {
+        let newMolecule = H2OOperation(block: moleculeBlock)
+        moleculeQueue.addOperation(newMolecule)
+        return newMolecule
     }
 }
