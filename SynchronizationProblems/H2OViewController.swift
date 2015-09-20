@@ -36,7 +36,7 @@ class H2OScene: SKScene {
     }
     
     override func didMoveToView(view: SKView) {
-        scheduler.block = { (nodes) -> Void in
+        scheduler.moleculeBlock = { (nodes) -> Void in
             for node in nodes {
                 
                 node.runAction(SKAction.sequence([
@@ -55,24 +55,21 @@ class H2OScene: SKScene {
             if (location.x < self.size.width / 2) {
                 let sprite = HydrogenNode.hydrogen(touch.locationInNode(self))
                 self.addChild(sprite)
-                
-                let operation = AtomOperation.init(node: sprite, block: {
+
+                self.scheduler.addHydrogen(sprite, block: {
                     sleep(3)
                     sprite.runAction(SKAction.scaleBy(1.5, duration: 1.5))
                     sleep(2)
                 })
-                
-                self.scheduler.addHydrogen(operation)
             } else {
                 let sprite = OxygenNode.player(touch.locationInNode(self))
                 self.addChild(sprite)
-                
-                let operation = AtomOperation.init(node: sprite, block: {
+
+                self.scheduler.addOxygen(sprite, block: {
                     sleep(3)
                     sprite.runAction(SKAction.scaleBy(1.5, duration: 1.5))
                     sleep(2)
                 })
-                self.scheduler.addOxygen(operation)
             }
         }
     }
