@@ -9,13 +9,18 @@
 import Foundation
 import SpriteKit
 
+enum AtomSprite: String {
+    case Hydrogen = "hydrogen"
+    case Oxygen = "oxygen"
+}
+
 // Класс SKSpriteNode для атомов - как водорода, так и кислорода
 class AtomNode: SKSpriteNode {
-    class func atom(name: String, location: CGPoint) -> AtomNode {
-        let sprite = AtomNode(imageNamed: name)
+    class func atom(type: AtomSprite, location: CGPoint) -> AtomNode {
+        let sprite = AtomNode(imageNamed: type.rawValue)
         
         sprite.position = location
-        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: name), size: sprite.size)
+        sprite.physicsBody = SKPhysicsBody(texture: SKTexture(imageNamed: type.rawValue), size: sprite.size)
         if let physics = sprite.physicsBody {
             physics.affectedByGravity = true
             physics.allowsRotation = true

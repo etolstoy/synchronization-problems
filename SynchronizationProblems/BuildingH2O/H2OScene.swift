@@ -47,14 +47,14 @@ class H2OScene: SKScene {
     }
     
     func triggerHydrogenEvent(location: CGPoint) {
-        let sprite = AtomNode.atom("hydrogen", location: location)
+        let sprite = AtomNode.atom(AtomSprite.Hydrogen, location: location)
         self.addChild(sprite)
         
         self.scheduler.addHydrogen(sprite, block: atomExecutionBlock(sprite))
     }
     
     func triggerOxygenEvent(location: CGPoint) {
-        let sprite = AtomNode.atom("oxygen", location: location)
+        let sprite = AtomNode.atom(AtomSprite.Hydrogen, location: location)
         self.addChild(sprite)
         
         self.scheduler.addOxygen(sprite, block: atomExecutionBlock(sprite))
