@@ -8,6 +8,8 @@
 
 import Foundation
 
+let DiningPhilosophersCount = 5
+
 class PhilosopherBlockOperation: NSBlockOperation {
     init(index: Int) {
         super.init()
@@ -24,7 +26,7 @@ class DiningPhilosophersOperationScheduler {
     
     init() {
         // В нашем представлении философы - это серийные очереди
-        for _ in 0...4 {
+        for _ in 1...DiningPhilosophersCount {
             let philosopherQueue = NSOperationQueue()
             philosopherQueue.maxConcurrentOperationCount = 1
             philosopherQueues.append(philosopherQueue)
@@ -32,7 +34,7 @@ class DiningPhilosophersOperationScheduler {
     }
     
     func startPhilosopher(index: Int) {
-        if (index > 4) {
+        if (index >= DiningPhilosophersCount) {
             print("No such philosopher")
             return;
         }
@@ -62,12 +64,12 @@ class DiningPhilosophersOperationScheduler {
     }
     
     func getLeftPhilosopher(index: Int) -> NSOperationQueue {
-        let leftIndex = index > 0 ? index - 1 : 4
+        let leftIndex = index > 0 ? index - 1 : DiningPhilosophersCount - 1
         return philosopherQueues[leftIndex]
     }
     
     func getRightPhilosopher(index: Int) -> NSOperationQueue {
-        let rightIndex = index < 4 ? index + 1 : 0
+        let rightIndex = index < DiningPhilosophersCount - 1 ? index + 1 : 0
         return philosopherQueues[rightIndex]
     }
 }

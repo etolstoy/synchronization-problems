@@ -9,14 +9,17 @@
 import Foundation
 import SpriteKit
 
+typealias MoleculeBlock = [SKSpriteNode] -> Void
+typealias MoleculeCondition = (molecule: H2OOperation) -> Bool
+
 class H2OOperationScheduler {
     let moleculeQueue = NSOperationQueue()
     
     // Этот блок вызывается при успешном сборе молекулы H2O,
     // задается снаружи
-    var moleculeBlock: (Array<SKSpriteNode>) -> Void
+    var moleculeBlock: MoleculeBlock
     
-    init(H2OBlock: (Array<SKSpriteNode>) -> Void) {
+    init(H2OBlock: MoleculeBlock) {
         // По условию задачи операции-барьеры должны выполняться последовательно
         moleculeQueue.maxConcurrentOperationCount = 1
         moleculeBlock = H2OBlock
@@ -40,7 +43,7 @@ class H2OOperationScheduler {
     
     // Вкратце - мы обходим очередь молекул в поисках подходящей, если не найдена - создаем новую и кладем в очередь.
     // "Подходящесть" определяется переданным замыканием.
-    func obtainMolecule(condition: (molecule: H2OOperation) -> Bool) -> H2OOperation {
+    func obtainMolecule(condition: MoleculeCondition) -> H2OOperation {
         let currentMolecule: H2OOperation
         if moleculeQueue.operationCount > 0 {
             currentMolecule = moleculeQueue.operations.first as! H2OOperation
@@ -53,7 +56,7 @@ class H2OOperationScheduler {
         }
     }
 
-    func obtainNextMolecule(molecule: H2OOperation, condition: (molecule: H2OOperation) -> Bool) -> H2OOperation {
+    func obtainNextMolecule(molecule: H2OOperation, condition: MoleculeCondition) -> H2OOperation {
         let nextIndex = moleculeQueue.operations.indexOf(molecule)! + 1
         
         if moleculeQueue.operationCount > nextIndex {
